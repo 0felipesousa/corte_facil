@@ -5,18 +5,10 @@ O Projeto Web Services para Barbearia é uma plataforma online que visa facilita
 
 ## Autores
 
-- Yan Victor Pereira da Silva - 20221115373
-- Levi Chaves da Silva - 20221114992
-- Felipe de Sousa Freitas - 20221115413
+- Yan Victor Pereira da Silva 
+- Levi Chaves da Silva 
+- Felipe de Sousa Freitas 
 
-
-## Deploy
-
-Para fazer o deploy desse projeto rode
-
-```bash
-  mvn deploy
-```
 
 
 ## Funcionalidades
@@ -26,19 +18,11 @@ Para fazer o deploy desse projeto rode
 - Interface multiplataforma (web e mobile)
 
 
-## Instalação
-
-Instale my-project com nvm
-
-```bash
-  nvm install my-project
-  cd my-project
-```
     
 ## Stack utilizada
 
 **Front-end:** React
 
-**Back-end:** Java, SpringBoot
+**Back-end:** Python, Django
 
 **Mobile:** React Native
