@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'corte_facil_api_rest',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'corte_facil.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'corteFacil',
+        'NAME': 'corte',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost'
     }
 }
