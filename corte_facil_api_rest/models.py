@@ -8,7 +8,7 @@ class Service(models.Model):
     class Meta:
         db_table = 'services'
     def __str__(self):
-        return '__all__'
+        return self.description
 
 class HoursScheduling(models.Model):
     days = [
@@ -22,11 +22,11 @@ class HoursScheduling(models.Model):
     barber = models.ForeignKey('Barber', on_delete=models.CASCADE)
     data = models.DateField()
     hora = models.TimeField()
-    day = models.CharField(max_length=20, choices=days)
+    day = models.CharField(max_length=20, choices=days, default="Today")
     status = models.BooleanField(default=False)
 
     class Meta:
-        db_table = 'hoursscheduling'
+        db_table = 'hoursScheduling'
     def __str__(self):
         return '__all__'
 
@@ -38,10 +38,10 @@ class Scheduling(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'scheduling'
+        db_table = 'corte_facil_api_rest_scheduling'
 
     def __str__(self):
-        return '__all__'
+        return f"{self.client} {self.service} {self.hour}"
 
 class SchedulingHistoric(models.Model):
     client = models.ForeignKey('Client', on_delete=models.CASCADE)
@@ -52,7 +52,7 @@ class SchedulingHistoric(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'schedulinghistoric'
+        db_table = 'corte_facil_api_rest_schedulinghistoric'
     def __str__(self):
         return '__all__'
 
@@ -65,25 +65,25 @@ class Client(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'client'
+        db_table = 'corte_facil_api_rest_client'
 
     def __str__(self):
-        return '__all__'
+        return self.name
 
 class Barber(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=250)
     password = models.CharField(max_length=50)
     phone = models.IntegerField()
-    barberShop = models.ForeignKey('BarberShop', on_delete=models.CASCADE)
+    barberShop = models.ForeignKey('BarberShop', on_delete=models.SET_NULL, null=True, blank=True)
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'barber'
+        db_table = 'corte_facil_api_rest_barber'
     def __str__(self):
-        return '__all__'
+        return self.name
 
 
 class BarberShop(models.Model):
@@ -91,11 +91,11 @@ class BarberShop(models.Model):
     email = models.EmailField(max_length=250)
     phone = models.IntegerField()
     address_id = models.IntegerField()
-    owner = models.ForeignKey('Barber', on_delete=models.CASCADE)
+    owner = models.ForeignKey('Barber', on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'barbershop'
+        db_table = 'corte_facil_api_rest_barbershop'
     def __str__(self):
-        return '__all__'
+        return self.name
